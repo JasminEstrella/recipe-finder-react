@@ -1,38 +1,128 @@
-.App {
-  text-align: center;
+* {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+header,
+footer {
+  padding: 10px;
+  background-color: #643843;
+  color: #E7CBCB;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+footer {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+}
+
+header img {
+  width: 80px;
+}
+
+.logo-text {
+  font-family: "Sacramento", cursive;
+  font-weight: 600;
+  font-style: normal;
+  margin: auto;
+  font-size: 5vh;
+}
+
+.search-section {
+  height: 50px;
+  background-color: #C88EA7;
+  padding: 10px;
+  display: flex;
+  flex-wrap: nowrap;
+
+}
+
+.search-text {
+  margin: auto 10px;
+  width: 40%;
+  text-align: end;
+  font-size: 18px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.search-bar {
+  /* margin: auto; */
+  display: flex;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.search-bar input,
+.search-bar button {
+  padding: 8px;
+  margin: 3px;
+  border-radius: 5px;
+  border: 1px white solid;
+}
+
+.search-bar input {
+  width: 100%;
+  font-size: 14px;
+}
+
+
+.menu-list {
+  padding: 20px 30px;
+  /* padding-inline: 30px; */
+  background-color: #E7CBCB;
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.menu {
+  flex-basis: calc(33.33% - 50px);
+  max-width: calc(33.33% - 50px);
+  margin: 15px auto;
+  border: 1px solid #FFFFFF;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.menu:hover {
+  transform: translateY(-5px);
+}
+
+/* .menu .title {
+  font-family: "Poiret One", sans-serif !important;
+  font-weight: 400;
+  font-style: normal;
+} */
+
+.menu img {
+  width: 100%;
+  border-radius: 5px;
+  height: 250px;
+  object-fit: cover;
+}
+
+.menu .description {
+  margin: 10px auto;
+}
+
+.menu .description p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.menu button {
+  background-color: #643843;
+  color: #FFFFFF;
+  padding: 10px;
+  border-radius: 5px;
+  border: 0;
 }
