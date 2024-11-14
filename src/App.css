@@ -24,13 +24,14 @@ footer {
 header img {
   width: 55px;
   margin: auto 10px;
+  border-radius: 5px;
 }
 
 .logo-text {
   font-family: "Sacramento", cursive;
   font-weight: 600;
   font-style: normal;
-  margin: auto;
+  margin: 5px auto;
   font-size: 5vh;
 }
 
@@ -41,6 +42,17 @@ header img {
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
+}
+
+.add-recipe-section {
+  padding: 30px;
+  display: flex;
+  background-color: #C88EA7;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .search-text {
@@ -68,20 +80,19 @@ header img {
   font-size: 14px;
 }
 
-
 .menu-list {
   padding: 20px 30px;
   background-color: #E7CBCB;
   height: fit-content;
   display: flex;
+  justify-content: flex-start;
   flex-wrap: wrap;
-  gap: 1rem;
 }
 
 .menu {
   flex-basis: calc(33.33% - 50px);
   max-width: calc(33.33% - 50px);
-  margin: 15px auto;
+  margin: 10px;
   border: 1px solid #FFFFFF;
   background-color: #FFFFFF;
   border-radius: 10px;
@@ -129,6 +140,28 @@ header img {
   font-size: 13px;
 }
 
+.add-recipe-text {
+  margin: 10px;
+  font-size: 18px;
+  color: #FAF7F0;
+}
+
+.add-recipe-button {
+  padding: 10px;
+  margin: 3px;
+  border-radius: 5px;
+  border: 2px #643843 solid;
+  color: #643843;
+  background-color: #FAF7F0;
+}
+
+.add-recipe-button:hover {
+
+  border: 2px #643843 solid;
+  background-color: #643843;
+  color: #FAF7F0;
+}
+
 .menu button:hover {
   background-color: #FAF7F0;
   color: #643843;
@@ -138,22 +171,24 @@ header img {
   cursor: pointer;
 }
 
+
 .recipe-section {
   height: 70vh;
-  padding: 30px;
+  padding: 0 20px;
   margin: auto;
-  overflow: scroll;
+  overflow-y: scroll;
   border-radius: 10px;
 }
 
 .recipe-section img {
-  width: 100%;
+  width: 80%;
   border-radius: 5px;
-  height: 50vh;
+  height: fit-content;
   object-fit: cover;
   border: 1px solid #FAF7F0;
-  margin: auto;
+  /* margin: auto; */
 }
+
 
 .recipe-section .title {
   margin-top: 10px;
@@ -166,10 +201,84 @@ header img {
   text-align: end;
 }
 
+.modal-fullscreen-xxl-down.modal-dialog {
+  height: min-content;
+  margin: auto;
+}
+
+.modal-fullscreen-xxl-down .modal-content {
+  border-radius: 10px;
+}
+
+.form-add-section {
+  padding: 20px;
+}
+
+.form-add-section .form-group {
+  display: flex;
+  /* width: 100%; */
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.form-add-section .form-group input {
+  margin: 8px;
+  border: 1px #E7CBCB solid;
+  border-radius: 5px;
+  height: 35px;
+}
+
+.form-add-section .form-group label {
+  font-weight: 600;
+  margin: auto 0;
+}
+
+.ingredient-details input {
+  width: 25%;
+}
+
+.instruction-details input {
+  width: 75%;
+}
+
+.ingre-buttons button {
+  width: 25px;
+  height: auto;
+  padding: 5px;
+  margin: auto;
+  border-radius: 3px;
+  margin-left: 5px;
+  font-size: 15px;
+  border: 1px #E7CBCB solid;
+}
+
+@media (min-width: 1400px) {
+
+  .modal-fullscreen-xxl-down.modal-dialog {
+    border-radius: 10px;
+    max-width: none;
+  }
+}
+
 @media (min-width: 1080px) {
   .menu {
     flex-basis: calc(25% - 50px);
     max-width: calc(25% - 50px);
+  }
+
+  .modal-fullscreen-xxl-down.modal-dialog {
+    border-radius: 10px;
+    width: 60%;
+  }
+
+}
+
+@media (max-width: 1079px) {
+
+
+  .modal-fullscreen-xxl-down.modal-dialog {
+    border-radius: 10px;
+    width: 75%;
   }
 }
 
@@ -181,10 +290,23 @@ header img {
 
   .menu-list {
     gap: 0;
+    justify-content: center;
+  }
+
+  .menu button {
+    width: 100%;
   }
 
   .search-section {
     flex-wrap: wrap;
+  }
+
+  .modal-fullscreen-xxl-down.modal-dialog {
+
+    height: min-content;
+    width: 90%;
+    margin: auto;
+    border-radius: 10px;
   }
 }
 
@@ -197,6 +319,10 @@ header img {
   .menu-list {
     flex-direction: row;
   }
+
+  .recipe-section {
+    padding: 10px;
+  }
 }
 
 @media (max-width: 420px) {
@@ -208,6 +334,16 @@ header img {
   .menu {
     flex-basis: 100%;
     max-width: 100%;
+  }
+
+  .modal-fullscreen-xxl-down.modal-dialog {
+
+    width: 95%;
+    border-radius: 10px;
+  }
+
+  .recipe-section .details {
+    font-size: 14px;
   }
 }
 
