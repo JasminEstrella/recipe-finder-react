@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button, Modal } from 'react-bootstrap';
 import './App.css';
 
 const recipes = [
@@ -219,12 +221,19 @@ function Menu() {
 }
 
 function MenuItems({ recipe }) {
+  const [showRecipe, setShowRecipe] = useState(false);
+
+  function handleShowRecipe() {
+    setShowRecipe(() => !showRecipe);
+  }
+
+
   return (
     <>
     <div className='menu'>
-        <img src={recipe.image_url} alt={recipe.title} />
+      <img src={recipe.image_url} alt={recipe.title} />
       <div className='title'>
-        <h3>{recipe.title}</h3>
+        <p>{recipe.title}</p>
       </div>
       <div className='description'>
         <p>Cooking time: {recipe.cooking_time}</p>
@@ -232,9 +241,71 @@ function MenuItems({ recipe }) {
         <p></p>
       </div>
       <div className='footer'>
-        <button>See recipe</button>
+        <Recipe recipe={recipe} />
+        {/* <button onClick={() => handleShowRecipe() }>See recipe</button> */}
+
       </div>
     </div>
+
+    {/* {
+      showRecipe && <Recipe recipe={recipe} handleShowRecipe={handleShowRecipe}/>
+    } */}
+    </>
+  )
+}
+
+function Recipe({recipe}) {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleShow = () => setShowModal(true);
+  const handleClose = () => setShowModal(false);
+
+
+  return(
+    <>
+
+    <button onClick={() => handleShow()}> See recipe</button>
+
+    <Modal show={showModal} onHide={handleClose}>
+      <Modal.Header closeButton>
+      </Modal.Header>
+      <Modal.Body>
+      <div className="recipe-section">
+        <img src={recipe.image_url} alt={recipe.title} />
+        <div className="title">
+          <h1>{recipe.title}</h1>
+        </div>
+        <div className="details">
+          <div className="prep">
+            <p>Cooking time: {recipe.cooking_time}</p>
+            <p>Servings:  {recipe.servings}</p>
+          </div>
+          <div className="ingredients">
+            <h2>Ingredients:</h2>
+            <ul>
+              {
+                recipe.ingredients.map((ingredient, i) => <li key={i}><span>{ingredient.quantity}</span> {ingredient.name}</li>)
+              }
+            </ul>
+          </div>
+          <div className="instruction">
+            <h2>Instructions:</h2>
+            <ol>
+              {
+                recipe.instructions.map((instruction, i) => <li key={i}>{instruction}</li>)
+              }
+            </ol>
+          </div>
+        </div>
+
+      </div>
+      </Modal.Body>
+      <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+              Close
+          </Button>
+      </Modal.Footer>
+    </Modal>
     </>
   )
 }
@@ -242,7 +313,7 @@ function MenuItems({ recipe }) {
 function Footer() {
   return(
     <footer>
-      <div>
+      <div className="ali">
         <p>Contact Us</p>
         <p>For inquiries, reach out at your-email@example.com</p>
         <div>
