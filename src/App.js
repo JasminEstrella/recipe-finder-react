@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Modal } from 'react-bootstrap';
 import './App.css';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import Menu from './components/Menu';
+import AddRecipe from "./components/AddRecipe";
+import SearchFilter from "./components/SearchFilter";
 
 const recipes = [
   {
@@ -26,7 +30,7 @@ const recipes = [
       ],
       "cooking_time": "20 minutes",
       "servings": 4,
-      "image_url": "https://i0.wp.com/herdgefluester.de/wp-content/uploads/2014/08/Spaghetti-Carbonara-scaled.jpg?resize=2048,2048&ssl=1"
+      "image_url": "https://cdn.pixabay.com/photo/2019/11/09/06/54/pasta-4612968_1280.jpg"
   },
   {
       "id": 2,
@@ -145,7 +149,7 @@ const recipes = [
       ],
       "cooking_time": "20 minutes",
       "servings": "24 cookies",
-      "image_url": "https://img.freepik.com/premium-photo/plate-chocolate-chip-cookies_896360-649.jpg"
+      "image_url": "https://cdn.pixabay.com/photo/2016/05/10/09/14/cookies-1383304_960_720.jpg"
   },
   {
       "id": 6,
@@ -168,162 +172,144 @@ const recipes = [
       "cooking_time": "10 minutes",
       "servings": 4,
       "image_url": "https://th.bing.com/th/id/OIP.6XBOFiZsf-cueu22qd0koQHaLH?rs=1&pid=ImgDetMain"
-  }
+  },
+  {
+    "id": 7,
+    "title": "Shrimp Tacos",
+    "ingredients": [
+      {"name": "shrimp", "quantity": "500g, peeled and deveined"},
+      {"name": "olive oil", "quantity": "2 tablespoons"},
+      {"name": "lime", "quantity": "1, juiced"},
+      {"name": "chili powder", "quantity": "1 teaspoon"},
+      {"name": "garlic powder", "quantity": "1 teaspoon"},
+      {"name": "salt", "quantity": "to taste"},
+      {"name": "corn tortillas", "quantity": "8"},
+      {"name": "cabbage", "quantity": "1 cup, shredded"},
+      {"name": "avocado", "quantity": "1, sliced"},
+      {"name": "cilantro", "quantity": "1/4 cup, chopped"},
+      {"name": "sour cream", "quantity": "1/2 cup"}
+    ],
+    "instructions": [
+      "In a bowl, mix the olive oil, lime juice, chili powder, garlic powder, and salt.",
+      "Add the shrimp and marinate for 15 minutes.",
+      "Heat a skillet over medium-high heat and cook the shrimp until pink and opaque, about 2-3 minutes per side.",
+      "Warm the corn tortillas in a skillet or microwave.",
+      "Assemble the tacos by adding shrimp, cabbage, avocado, and cilantro to each tortilla.",
+      "Top with sour cream and serve."
+    ],
+    "cooking_time": "25 minutes",
+    "servings": 4,
+    "image_url": "https://cdn.pixabay.com/photo/2019/09/22/09/47/tacos-4495602_1280.jpg"
+  },
+  {
+    "id": 8,
+    "title": "Lemon Garlic Roasted Chicken",
+    "ingredients": [
+      {"name": "chicken thighs", "quantity": "4"},
+      {"name": "lemon", "quantity": "1, juiced"},
+      {"name": "garlic", "quantity": "4 cloves, minced"},
+      {"name": "olive oil", "quantity": "2 tablespoons"},
+      {"name": "thyme", "quantity": "1 teaspoon"},
+      {"name": "rosemary", "quantity": "1 teaspoon"},
+      {"name": "salt", "quantity": "to taste"},
+      {"name": "black pepper", "quantity": "to taste"}
+    ],
+    "instructions": [
+      "Preheat the oven to 400°F (200°C).",
+      "In a bowl, mix the lemon juice, garlic, olive oil, thyme, rosemary, salt, and pepper.",
+      "Place the chicken thighs in a baking dish and pour the marinade over them.",
+      "Roast in the oven for 35-40 minutes, or until the chicken is cooked through and golden brown.",
+      "Serve with your favorite side dishes."
+    ],
+    "cooking_time": "45 minutes",
+    "servings": 4,
+    "image_url": "https://th.bing.com/th/id/OIP.BceyB8NOrvngu1Ka1MLMoAHaLH?rs=1&pid=ImgDetMain"
+  },
+  {
+    "id": 9,
+    "title": "Mango Smoothie",
+    "ingredients": [
+      {"name": "mango", "quantity": "2, peeled and chopped"},
+      {"name": "banana", "quantity": "1"},
+      {"name": "Greek yogurt", "quantity": "1/2 cup"},
+      {"name": "orange juice", "quantity": "1/2 cup"},
+      {"name": "honey", "quantity": "1 tablespoon"},
+      {"name": "ice cubes", "quantity": "1 cup"}
+    ],
+    "instructions": [
+      "Combine the mango, banana, Greek yogurt, orange juice, honey, and ice cubes in a blender.",
+      "Blend until smooth and creamy.",
+      "Pour into glasses and serve immediately."
+    ],
+    "cooking_time": "5 minutes",
+    "servings": 2,
+    "image_url": "https://cdn.pixabay.com/photo/2022/10/30/05/22/juice-7556620_960_720.jpg"
+  },
+  {
+    "id": 10,
+    "title": "Classic Margherita Pizza",
+    "ingredients": [
+      {"name": "pizza dough", "quantity": "1 ball"},
+      {"name": "tomato sauce", "quantity": "1/2 cup"},
+      {"name": "fresh mozzarella", "quantity": "250g, sliced"},
+      {"name": "fresh basil leaves", "quantity": "1/4 cup"},
+      {"name": "extra virgin olive oil", "quantity": "2 tablespoons"},
+      {"name": "salt", "quantity": "to taste"},
+      {"name": "black pepper", "quantity": "to taste"}
+    ],
+    "instructions": [
+      "Preheat your oven to 475°F (245°C).",
+      "Roll out the pizza dough on a lightly floured surface to your desired thickness.",
+      "Transfer the dough to a baking sheet or pizza stone.",
+      "Spread the tomato sauce evenly over the dough.",
+      "Arrange the mozzarella slices on top of the sauce.",
+      "Bake in the preheated oven for 10-12 minutes, or until the crust is golden and the cheese is bubbly.",
+      "Remove the pizza from the oven and top with fresh basil leaves.",
+      "Drizzle with olive oil and season with salt and black pepper.",
+      "Slice and serve hot."
+    ],
+    "cooking_time": "15 minutes",
+    "servings": 4,
+    "image_url": "https://cdn.pixabay.com/photo/2020/04/04/09/59/pizza-5001588_1280.jpg"
+  } 
+
 ];
 
 export default function App() {
+  
+  const [searchRecipe, setSearchRecipe] = useState('');
+  const [recipeList, setRecipeList] = useState(recipes);
+  const [menuItem, setMenuItem] = useState(recipes);
+
+  function handleUpdateRecipe(newRecipe) {
+    setRecipeList((recipe) => [...recipe, newRecipe]);
+    setMenuItem((recipe) => [...recipe, newRecipe]);
+  }
+
+  function handleSearch(value) {
+    if (value === '') setMenuItem(recipeList);
+    setSearchRecipe(value);
+  }
+
+  function handleMenuFilter(e) {
+    e.preventDefault();
+    setMenuItem(recipeList);
+    setMenuItem((recipes) => recipes.slice().filter((recipe) => 
+      recipe.title.toLowerCase().includes(searchRecipe.toLowerCase())
+    ));
+  }
+
   return (
     <div className="App">
       <Header/>
-      <SearchFilter/>
-      <Menu/>
+      <SearchFilter 
+        searchRecipe={searchRecipe} 
+        onSearch={handleSearch} 
+        onMenuFilter={handleMenuFilter} 
+      />
+      <Menu menuItem={menuItem}/>
+      <AddRecipe recipes={recipeList} handleUpdateRecipe={handleUpdateRecipe}/>
       <Footer/>
     </div>
   );
-}
-
-
-function Header() {
-  return (
-    <header>
-      {/* <img src='/logo-flower.jpg' alt='logo'/> */}
-      <span className='logo-text'>Apple Cinnamon</span>
-    </header>
-  )
-}
-
-function SearchFilter() {
-  return (
-    <div className='search-section'>
-      <span className='search-text'>
-        Which recipe would you like to search? 
-      </span>
-      <div className='search-bar'>
-        <input id='search-input' placeholder='Type menu here...'/>
-        <button>Search</button>
-      </div>
-    </div>
-  )
-}
-
-
-function Menu() {
-  return(
-    <div className='menu-list'>
-      {
-        recipes.map((recipe) => 
-          <MenuItems recipe={recipe} key={recipe.title}  />
-        )
-      }
-      {/* <MenuItems/> */}
-    </div>
-  )
-}
-
-function MenuItems({ recipe }) {
-  const [showRecipe, setShowRecipe] = useState(false);
-
-  function handleShowRecipe() {
-    setShowRecipe(() => !showRecipe);
-  }
-
-
-  return (
-    <>
-    <div className='menu'>
-      <img src={recipe.image_url} alt={recipe.title} />
-      <div className='title'>
-        <p>{recipe.title}</p>
-      </div>
-      <div className='description'>
-        <p>Cooking time: {recipe.cooking_time}</p>
-        <p>Servings: {recipe.servings}</p>
-        <p></p>
-      </div>
-      <div className='footer'>
-        <Recipe recipe={recipe} />
-        {/* <button onClick={() => handleShowRecipe() }>See recipe</button> */}
-
-      </div>
-    </div>
-
-    {/* {
-      showRecipe && <Recipe recipe={recipe} handleShowRecipe={handleShowRecipe}/>
-    } */}
-    </>
-  )
-}
-
-function Recipe({recipe}) {
-  const [showModal, setShowModal] = useState(false);
-
-  const handleShow = () => setShowModal(true);
-  const handleClose = () => setShowModal(false);
-
-
-  return(
-    <>
-
-    <button onClick={() => handleShow()}> See recipe</button>
-
-    <Modal show={showModal} onHide={handleClose}>
-      <Modal.Header closeButton>
-      </Modal.Header>
-      <Modal.Body>
-      <div className="recipe-section">
-        <img src={recipe.image_url} alt={recipe.title} />
-        <div className="title">
-          <h1>{recipe.title}</h1>
-        </div>
-        <div className="details">
-          <div className="prep">
-            <p>Cooking time: {recipe.cooking_time}</p>
-            <p>Servings:  {recipe.servings}</p>
-          </div>
-          <div className="ingredients">
-            <h2>Ingredients:</h2>
-            <ul>
-              {
-                recipe.ingredients.map((ingredient, i) => <li key={i}><span>{ingredient.quantity}</span> {ingredient.name}</li>)
-              }
-            </ul>
-          </div>
-          <div className="instruction">
-            <h2>Instructions:</h2>
-            <ol>
-              {
-                recipe.instructions.map((instruction, i) => <li key={i}>{instruction}</li>)
-              }
-            </ol>
-          </div>
-        </div>
-
-      </div>
-      </Modal.Body>
-      <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-              Close
-          </Button>
-      </Modal.Footer>
-    </Modal>
-    </>
-  )
-}
-
-function Footer() {
-  return(
-    <footer>
-      <div className="ali">
-        <p>Contact Us</p>
-        <p>For inquiries, reach out at your-email@example.com</p>
-        <div>
-          <p>Follow us on Facebook | Twitter | Instagram</p>
-          <p>Subscribe to our newsletter for updates and exclusive content!</p>
-        </div>
-      </div>
-      <div>
-        <p>© 2024 Your Company. All rights reserved. | Privacy Policy</p>
-      </div>
-    </footer>
-  )
 }
